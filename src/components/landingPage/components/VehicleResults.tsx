@@ -1,5 +1,5 @@
 import React from 'react';
-import type { VehicleData } from '../types';
+import type { VehicleData } from '../../../types';
 
 interface VehicleResultsProps {
   vehicleData: VehicleData;
