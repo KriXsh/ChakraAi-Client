@@ -1,50 +1,33 @@
-import React, { useState } from 'react';
-import Header from './components/Header';
-import HeroSection from './components/HeroSection';
-import FeaturesSection from './components/FeaturesSection';
-import APISection from './components/APISection';
-import PricingSection from './components/PricingSection';
-import AIChat from './components/AIChat';
-// import StatsSection from './components/StatsSection';
-// import PartnersSection from './components/PartnersSection';
-import AboutSection from './components/AboutSection';
-import Footer from './components/Footer';
-import ContactModal from './components/ContactModal';
+// src/App.tsx
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage'; 
+import SignIn from './pages/SignIn';       
+import SignUp from './pages/SignUp';
+import DashboardHome from './pages/DashboardHome';
+import Garage from './pages/Garage';
+import BulkVerification from './pages/BulkVerification';
+import ApiPlayground from './pages/ApiPlayground';
 
 const App: React.FC = () => {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-
-  const handleContactClick = () => {
-    setIsContactModalOpen(true);
-  };
-
-  const handleCloseContact = () => {
-    setIsContactModalOpen(false);
-  };
-
   return (
-    <div className="min-h-screen bg-white">
-      <Header onContactClick={handleContactClick} />
-
-      <main>
-        <HeroSection
-        />
-        <APISection />
-        <AIChat />
-        <PricingSection onContactClick={handleContactClick} />
-         <FeaturesSection />
-        {/* <StatsSection /> */}
-        {/* <PartnersSection /> */}
-        <AboutSection />
-      </main>
-
-      <Footer onContactClick={handleContactClick} />
-
-      <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={handleCloseContact}
-      />
-    </div>
+    <Router>
+      <Routes>
+        {/* Landing Page Routes */}
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        
+        {/* Consumer Dashboard Routes */}
+        <Route path="/dashboard" element={<DashboardHome />} />
+        <Route path="/garage" element={<Garage />} />
+        
+        {/* Enterprise Dashboard Routes */}
+        <Route path="/enterprise" element={<BulkVerification />} /> {/* Default to bulk */}
+        <Route path="/enterprise/bulk" element={<BulkVerification />} />
+        <Route path="/enterprise/api" element={<ApiPlayground />} />
+      </Routes>
+    </Router>
   );
 };
 

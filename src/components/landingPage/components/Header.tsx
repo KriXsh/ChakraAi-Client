@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface HeaderProps {
   onContactClick: () => void;
@@ -18,28 +19,31 @@ const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
                 Chakra
               </h1>
             </div>
-            
+
             <nav className="hidden md:ml-8 md:flex space-x-8">
-              <a href="#home" className="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+              <a href="#dashboard" className="text-gray-700 hover:text-blue-600 font-medium">Dashboard</a>
               <a href="#features" className="text-gray-700 hover:text-blue-600 font-medium">Features</a>
               <a href="#api" className="text-gray-700 hover:text-blue-600 font-medium">API</a>
               <a href="#pricing" className="text-gray-700 hover:text-blue-600 font-medium">Pricing</a>
               <a href="#about" className="text-gray-700 hover:text-blue-600 font-medium">About</a>
             </nav>
           </div>
-          
+
           <div className="hidden md:flex items-center space-x-4">
-            <button 
+            <button
               onClick={onContactClick}
               className="text-gray-700 hover:text-blue-600 font-medium"
             >
               Contact
             </button>
-            <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300">
+            <Link
+              to="/signin" // This attribute specifies the destination path
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300"
+            >
               Sign In
-            </button>
+            </Link>
           </div>
-          
+
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -49,7 +53,7 @@ const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
             </button>
           </div>
         </div>
-        
+
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden">
@@ -59,7 +63,7 @@ const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
               <a href="#api" className="block px-3 py-2 text-gray-700 hover:text-blue-600">API</a>
               <a href="#pricing" className="block px-3 py-2 text-gray-700 hover:text-blue-600">Pricing</a>
               <a href="#about" className="block px-3 py-2 text-gray-700 hover:text-blue-600">About</a>
-              <button 
+              <button
                 onClick={onContactClick}
                 className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600"
               >
