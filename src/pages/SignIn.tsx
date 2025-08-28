@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Mail, Lock } from 'lucide-react';
 import AuthLayout from '../components/layout/AuthLayout'; 
+import { useNavigate } from 'react-router-dom';
 
 // Re-using the GoogleIcon from the SignUp component
 const GoogleIcon = () => (
@@ -14,6 +15,7 @@ const GoogleIcon = () => (
 );
 
 const SignIn: React.FC = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: 'testuser@example.com', // Default value
     password: '●●●●●●●●'           // Default value
@@ -26,7 +28,7 @@ const SignIn: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Signing in with:", formData);
-    alert("Check the console for form data. In a real app, this would log the user in.");
+    navigate('/dashboard'); // Redirect to dashboard on sign in
   };
 
   return (
