@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ChakraLogo from '../../../assets/logo/ChakraLogo';
 
 interface HeaderProps {
   onContactClick: () => void;
@@ -14,6 +15,7 @@ const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
+           <ChakraLogo />
             <div className="flex-shrink-0">
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Chakra
